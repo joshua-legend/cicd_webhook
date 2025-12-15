@@ -10,3 +10,19 @@ export const createNotionBody = (dto: CreateBasicDBDTO, pageId: string) => ({
   },
 });
 
+export const createNotionDataBody = (database_id, obj) => ({
+  parent: {
+    database_id: database_id,
+  },
+  properties: {
+    이름: {
+      title: [{ text: { content: obj.name } }],
+    },
+    날짜: {
+      date: { start: obj.date },
+    },
+    내용: {
+      rich_text: [{ text: { content: obj.text } }],
+    },
+  },
+});

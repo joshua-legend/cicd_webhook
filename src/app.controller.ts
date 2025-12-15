@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateBasicDBDTO } from './dto/create-basic-db-dto';
 
@@ -14,5 +14,10 @@ export class AppController {
   @Post()
   postBasicDB(@Body() dto: CreateBasicDBDTO) {
     return this.appService.postBasicDB(dto);
+  }
+
+  @Post('/:dbID')
+  postBasicDBdata(@Param('dbID') dbID: string) {
+    return this.appService.postBasicDBdata(dbID);
   }
 }
